@@ -1,0 +1,52 @@
+'use strict';
+// icons.js
+const paths = {
+ compass:'<circle cx="12" cy="12" r="9"/><path d="m16 8-2.5 5.5L8 16l2.5-5.5L16 8Z"/>',
+ book:'<path d="M12 5v15M3 4c4-1 6 0 9 2 3-2 5-3 9-2v14c-4-1-6 0-9 2-3-2-5-3-9-2V4Z"/>',
+ chart:'<path d="M4 4v16h17M8 15v-4m5 4V6m5 9V9"/>',
+ trophy:'<path d="M8 3h8v5a4 4 0 0 1-8 0V3Zm4 9v6m-4 3h8M8 5H4v2a4 4 0 0 0 4 4m8-6h4v2a4 4 0 0 1-4 4"/>',
+ settings:'<path d="M9.5 3h5l.6 2.4 2 .9 2.3-.6 2.5 4.2-1.7 1.8v1.6l1.7 1.8-2.5 4.2-2.3-.6-2 .9-.6 2.4h-5l-.6-2.4-2-.9-2.3.6-2.5-4.2 1.7-1.8v-1.6L2.1 9.9l2.5-4.2 2.3.6 2-.9L9.5 3Z"/><circle cx="12" cy="12" r="3"/>',
+ help:'<circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 4.2 1.8c-1 .6-1.7 1.2-1.7 2.7M12 17h.01"/>',
+ arrow:'<path d="M4 12h16m-6-6 6 6-6 6"/>',
+ chevron:'<path d="m9 5 7 7-7 7"/>',
+ down:'<path d="m6 9 6 6 6-6"/>',
+ back:'<path d="M20 12H4m6-6-6 6 6 6"/>',
+ close:'<path d="m6 6 12 12M6 18 18 6"/>',
+ check:'<path d="m5 12 4 4L19 6"/>',
+ leaf:'<path d="M5 19c-4-7 0-15 15-15 0 15-8 19-15 15Zm0 0L16 8M9 15l-1-5m5 1 5 1"/>',
+ star:'<path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.6l6.2-.9L12 3Z"/>',
+ spark:'<path d="m12 2 2.3 7.7L22 12l-7.7 2.3L12 22l-2.3-7.7L2 12l7.7-2.3L12 2Z"/>',
+ shapes:'<path d="m8 3 5 8H3l5-8Z"/><rect x="3" y="14" width="7" height="7" rx="1"/><circle cx="17" cy="17" r="4"/>',
+ search:'<circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5m-13-9 2 2 3-4"/>',
+ puzzle:'<path d="M4 4h6a3 3 0 1 1 4 0h6v6a3 3 0 1 0 0 4v6h-6a3 3 0 1 0-4 0H4v-6a3 3 0 1 0 0-4V4Z"/>',
+ bag:'<path d="M5 8h14l2 13H3L5 8Zm3 0V6a4 4 0 0 1 8 0v2m-8 4h.01M16 12h.01"/>',
+ clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+ play:'<path d="m8 4 13 8-13 8V4Z"/>',
+ bulb:'<path d="M9 18h6m-5 3h4m-5-6c-5-4-3-12 3-12s8 8 3 12v3H9v-3Zm-7-8H1m22 0h-1M4 2l1 1m15-1-1 1"/>',
+ volume:'<path d="m11 4-6 5H2v6h3l6 5V4Zm4 4a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/>',
+ plus:'<path d="M12 5v14M5 12h14"/>',
+ minus:'<path d="M5 12h14"/>',
+ refresh:'<path d="M20 9a8 8 0 1 0 .5 5M20 3v6h-6"/>',
+ flag:'<path d="M5 22V3m0 1c5-5 9 5 15 0v11c-6 5-10-5-15 0"/>',
+ lock:'<rect x="5" y="10" width="14" height="11" rx="3"/><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 5v2"/>',
+ flower:'<path d="M12 12c-8-4-7-10-3-9 2 0 3 4 3 9 1-9 7-11 8-7 1 3-3 5-8 7 9-1 12 4 8 6-3 2-6-2-8-6 4 8 0 13-3 10-3-2 0-7 3-10-8 4-13 0-10-3 2-3 7 0 10 3Z"/>',
+ grid:'<rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/>',
+ download:'<path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/>',
+ moon:'<path d="M20.5 13A9 9 0 0 1 11 3.5a9 9 0 1 0 9.5 9.5Z"/>',
+ menu:'<path d="M4 6h16M4 12h16M4 18h16"/>',
+ heart:'<path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/>',
+ shield:'<path d="m12 3 9 4v5c0 5-9 10-9 10S3 17 3 12V7l9-4Z"/><path d="m8 12 3 3 5-6"/>',
+ trash:'<path d="M3 6h18M9 6V3h6v3m-9 0 1 15h10l1-15M10 10v7m4-7v7"/>',
+ cat:'<path d="M4 10V3l5 4h6l5-4v7c4 12-20 12-16 0Z"/><path d="M8 12h.01M16 12h.01m-6 4 2 1 2-1"/>',
+ dog:'<path d="m6 6-3 5-2-1 2-7 6 1h6l6-1 2 7-2 1-3-5v10c0 7-12 7-12 0V6Z"/><path d="M9 11h.01M15 11h.01m-5 4h4l-2 2-2-2Z"/>',
+ apple:'<path d="M12 6c0-3 2-5 5-4-1 3-3 4-5 4Zm0 1C3 2-1 12 7 21c2 2 3-1 5-1s3 3 5 1c8-9 4-19-5-14Z"/>',
+ person:'<circle cx="12" cy="6" r="3"/><path d="M6 21v-5a6 6 0 0 1 12 0v5H6Z"/>',
+ coin:'<circle cx="12" cy="12" r="9"/><path d="M12 6v12m4-10h-5a2 2 0 0 0 0 4h2a2 2 0 0 1 0 4H8"/>',
+ pencil:'<path d="m4 16 12-12a2 2 0 0 1 4 4L8 20l-5 1 1-5Zm10-10 4 4"/>',
+ basket:'<path d="M2 9h20l-3 12H5L2 9Zm4 0 4-7m8 7-4-7M8 13v4m4-4v4m4-4v4"/>',
+ info:'<circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10h.01"/>'
+};
+const icon=(name,cls='')=>`<svg class="icon ${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${paths[name]||paths.spark}</svg>`;
+const logo=()=>`<span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 40 40"><rect width="40" height="40" rx="13" fill="#235c49"/><path d="M8 28V13l6 7 6-7 6 7 6-7v15" fill="none" stroke="#f6db9a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="brand-word">mathoria<span class="brand-dot">.</span></span>`;
+const shape=(kind,cls='')=>`<svg class="shape ${cls}" viewBox="0 0 72 72" aria-hidden="true">${kind==='circle'?'<circle cx="36" cy="36" r="25" fill="currentColor"/>':kind==='triangle'?'<path d="M36 9 66 61H6L36 9Z" fill="currentColor" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>':'<rect x="12" y="12" width="48" height="48" rx="7" fill="currentColor"/>'}</svg>`;
+const mascot=(cls='')=>`<svg class="mascot ${cls}" viewBox="0 0 160 160" fill="none" aria-hidden="true"><ellipse cx="81" cy="146" rx="44" ry="8" fill="#b9d3bd" opacity=".55"/><path d="m44 111-9 20m77-20 10 20" stroke="#235c49" stroke-width="12" stroke-linecap="round"/><path d="m34 75-15 9m105-9 17 9" stroke="#235c49" stroke-width="12" stroke-linecap="round"/><rect x="31" y="39" width="98" height="84" rx="32" fill="#7ba98a"/><rect x="41" y="48" width="78" height="62" rx="24" fill="#eaf1da"/><circle cx="64" cy="75" r="5" fill="#235c49"/><circle cx="96" cy="75" r="5" fill="#235c49"/><path d="M72 88q8 8 16 0" stroke="#235c49" stroke-width="3" stroke-linecap="round"/><ellipse cx="53" cy="86" rx="7" ry="4" fill="#ecad94"/><ellipse cx="107" cy="86" rx="7" ry="4" fill="#ecad94"/><path d="M79 39V22c-1-12 14-17 23-13-1 11-12 15-23 13Z" fill="#4b825b"/><path d="M80 29c-12 0-22-9-18-20 14 0 21 7 18 20Z" fill="#8caf77"/><rect x="62" y="115" width="36" height="11" rx="5" fill="#f1c977"/><path d="m78 113 4 4-4 4-4-4 4-4Z" fill="#235c49"/></svg>`;
